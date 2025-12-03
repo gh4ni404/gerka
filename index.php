@@ -263,7 +263,7 @@ require_once 'koneksi.php';
                     </div>
 
                     <!-- Tombol Submit -->
-                    <div class="mt-5 pt-4 border-t border-gray-100 text-center">
+                    <div class="mt-2 pt-4 border-t border-gray-100 text-center">
                         <button type="submit"
                             class="btn-primary text-white font-bold px-6 py-2 rounded-xl text-lg inline-flex items-center shadow-lg">
                             <i class="fas fa-paper-plane mr-3"></i> Daftar Sekarang
