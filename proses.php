@@ -3,23 +3,33 @@ require_once 'koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil dan bersihkan data input
+    $nik = bersihkan_input($_POST['nik']);
     $nama = bersihkan_input($_POST['nama']);
-    $email = bersihkan_input($_POST['email']);
+    $jenis_kelamin = bersihkan_input($_POST['jenis_kelamin']);
+    $usia = bersihkan_input($_POST['usia']);
     $no_telepon = bersihkan_input($_POST['no_telepon']);
+    $alamat = bersihkan_input($_POST['alamat']);
     $asal_instansi = bersihkan_input($_POST['asal_instansi']);
     $jenis_pengunjung = bersihkan_input($_POST['jenis_pengunjung']);
+    $waktu_kunjungan = bersihkan_input($_POST['waktu_kunjungan']);
+    $setuju_data = isset($_POST['setuju_data']) ? 1 : 0;
     
     // Validasi data
     $errors = [];
+    
+    // Validasi NIK (16 digit angka)
+    if (!preg_match('/^[0-9]{16}$/', $nik)) {
+        $errors[] = "NIK harus terdiri dari 16 digit angka";
+    }
     
     // Validasi nama (minimal 3 karakter)
     if (strlen($nama) < 3) {
         $errors[] = "Nama harus minimal 3 karakter";
     }
     
-    // Validasi email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Format email tidak valid";
+    // Validasi usia (5-100 tahun)
+    if ($usia < 5 || $usia > 100) {
+        $errors[] = "Usia harus antara 5-100 tahun";
     }
     
     // Validasi nomor telepon (hanya angka, 10-15 digit)
@@ -27,33 +37,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "Nomor telepon harus 10-15 digit angka";
     }
     
+    // Validasi alamat
+    if (strlen($alamat) < 10) {
+        $errors[] = "Alamat harus minimal 10 karakter";
+    }
+    
     // Validasi asal instansi
     if (strlen($asal_instansi) < 3) {
         $errors[] = "Asal instansi harus minimal 3 karakter";
     }
     
-    // Cek apakah email sudah terdaftar
-    $sql_cek = "SELECT id FROM pengunjung WHERE email = ?";
+    // Validasi persetujuan
+    if (!$setuju_data) {
+        $errors[] = "Anda harus menyetujui pernyataan penggunaan data";
+    }
+    
+    // Cek apakah NIK sudah terdaftar (untuk mencegah duplikasi)
+    $sql_cek = "SELECT id FROM pengunjung WHERE nik = ?";
     $stmt_cek = mysqli_prepare($conn, $sql_cek);
-    mysqli_stmt_bind_param($stmt_cek, "s", $email);
+    mysqli_stmt_bind_param($stmt_cek, "s", $nik);
     mysqli_stmt_execute($stmt_cek);
     mysqli_stmt_store_result($stmt_cek);
     
     if (mysqli_stmt_num_rows($stmt_cek) > 0) {
-        $errors[] = "Email sudah terdaftar";
+        $errors[] = "NIK sudah terdaftar. Pengunjung dengan NIK ini sudah terdaftar sebelumnya.";
     }
     mysqli_stmt_close($stmt_cek);
     
+    // Cek apakah nomor telepon sudah terdaftar (opsional, untuk validasi tambahan)
+    $sql_cek_telp = "SELECT id FROM pengunjung WHERE no_telepon = ?";
+    $stmt_cek_telp = mysqli_prepare($conn, $sql_cek_telp);
+    mysqli_stmt_bind_param($stmt_cek_telp, "s", $no_telepon);
+    mysqli_stmt_execute($stmt_cek_telp);
+    mysqli_stmt_store_result($stmt_cek_telp);
+    
+    if (mysqli_stmt_num_rows($stmt_cek_telp) > 0) {
+        $errors[] = "Nomor telepon sudah terdaftar. Silakan gunakan nomor telepon lain.";
+    }
+    mysqli_stmt_close($stmt_cek_telp);
+    
     // Jika tidak ada error, simpan ke database
     if (empty($errors)) {
-        $sql = "INSERT INTO pengunjung (nama, email, no_telepon, asal_instansi, jenis_pengunjung) 
-                VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO pengunjung (nik, nama, jenis_kelamin, usia, no_telepon, alamat, asal_instansi, jenis_pengunjung, waktu_kunjungan, setuju_data) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "sssss", $nama, $email, $no_telepon, $asal_instansi, $jenis_pengunjung);
+        mysqli_stmt_bind_param($stmt, "sssisssssi", $nik, $nama, $jenis_kelamin, $usia, $no_telepon, $alamat, $asal_instansi, $jenis_pengunjung, $waktu_kunjungan, $setuju_data);
         
         if (mysqli_stmt_execute($stmt)) {
-            $_SESSION['sukses'] = "Registrasi berhasil! Terima kasih $nama telah mendaftar sebagai pengunjung GERKA 2025.";
+            $_SESSION['sukses'] = "Registrasi berhasil! Terima kasih $nama telah mendaftar sebagai pengunjung GERKA 2025. NIK Anda: $nik";
             mysqli_stmt_close($stmt);
             header("Location: index.php");
             exit();
