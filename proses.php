@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Validasi alamat
-    if (strlen($alamat) < 10) {
+    if (strlen($alamat) < 3) {
         $errors[] = "Alamat harus minimal 10 karakter";
     }
     
