@@ -289,7 +289,7 @@ require_once 'koneksi.php';
                 <h4 class="font-bold text-xl text-gray-800 mb-4 flex items-center">
                     <i class="fas fa-calendar-alt mr-3" style="color: #f65566;"></i>Detail Pelaksanaan
                 </h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 mx-10 gap-6">
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-3" style="background: rgba(236, 38, 143, 0.1);">
