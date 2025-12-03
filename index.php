@@ -82,7 +82,7 @@ require_once 'koneksi.php';
 <body class="min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <!-- Header dengan background gradient -->
-        <header class="text-center mb-10 bg-white rounded-2xl card-shadow p-8 max-w-4xl mx-auto">
+        <header class="text-center mb-5 bg-white rounded-2xl card-shadow p-8 max-w-8xl mx-auto">
             <div class="flex flex-col md:flex-row justify-center items-center mb-6">
                 <div class="w-20 h-20 card-shadow  rounded-full flex items-center justify-center mr-0 md:mr-6 mb-4 md:mb-0" style="border-width: 1px; border-color: #ec268f; border-style: solid; background: white;">
                     <img src="assets/images/logo540.png" alt="logo">
@@ -101,8 +101,12 @@ require_once 'koneksi.php';
             <div class="max-w-4xl mx-auto mb-6 bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200 text-green-800 px-6 py-4 rounded-xl card-shadow">
                 <div class="flex items-center">
                     <i class="fas fa-check-circle text-green-600 text-xl mr-3"></i>
-                    <span class="font-medium"><?php echo $_SESSION['sukses'];
-                                                unset($_SESSION['sukses']); ?></span>
+                    <span class="font-medium">
+                        <?php
+                        echo $_SESSION['sukses'];
+                        unset($_SESSION['sukses']);
+                        ?>
+                    </span>
                 </div>
             </div>
         <?php endif; ?>
@@ -111,155 +115,166 @@ require_once 'koneksi.php';
             <div class="max-w-4xl mx-auto mb-6 bg-gradient-to-r from-red-100 to-pink-100 border border-red-200 text-red-800 px-6 py-4 rounded-xl card-shadow">
                 <div class="flex items-center">
                     <i class="fas fa-exclamation-circle text-red-600 text-xl mr-3"></i>
-                    <span class="font-medium"><?php echo $_SESSION['error'];
-                                                unset($_SESSION['error']); ?></span>
+                    <span class="font-medium">
+                        <?php
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                        ?>
+                    </span>
                 </div>
             </div>
         <?php endif; ?>
 
-        <!-- Form Registrasi -->
-        <div class="max-w-4xl mx-auto bg-white rounded-2xl card-shadow overflow-hidden mb-10">
-            <div class="gradient-primary px-8 py-6">
-                <h3 class="text-2xl font-bold text-white">Form Pendaftaran</h3>
-                <p class="text-pink-100 text-sm mt-1">Isi data diri dengan lengkap dan benar</p>
+        <div class="max-w-8xl h-auto mx-auto mb-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Banner -->
+            <div class="bg-white rounded-2xl card-shadow">
+                <img src="assets/images/comingsoon.jpeg" alt="Banner GERKA 2025" class="w-full h-auto rounded-2xl">
             </div>
 
-            <form action="proses.php" method="POST" class="p-8" id="formRegistrasi">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Nama Lengkap -->
-                    <div class="form-group">
-                        <label for="nama" class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-user" style="color: #ec268f;" class="mr-2"></i> Nama Lengkap
-                        </label>
-                        <input type="text" id="nama" name="nama" required
-                            class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:border-[#ec268f] focus:ring-2 focus:ring-[#ec268f] transition-all duration-300"
-                            placeholder="Masukkan nama lengkap Anda">
-                    </div>
+            <!-- Form Registrasi -->
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl card-shadow overflow-hidden">
+                <div class="gradient-primary px-8 py-6">
+                    <h3 class="text-2xl font-bold text-white">Form Pendaftaran</h3>
+                    <p class="text-pink-100 text-sm mt-1">Isi data diri dengan lengkap dan benar</p>
+                </div>
 
-                    <!-- Jenis Kelamin -->
-                    <div class="form-group">
-                        <label class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-venus-mars" style="color: #ec268f;" class="mr-2"></i> Jenis Kelamin
-                        </label>
-                        <div class="flex space-x-6">
-                            <label class="flex items-center bg-gray-50 hover:bg-pink-50 px-5 py-3 rounded-xl cursor-pointer transition-colors duration-300">
-                                <input type="radio" name="jenis_kelamin" value="L" required class="mr-3 h-5 w-5" style="accent-color: #ec268f;">
-                                <span class="text-gray-700 font-medium">Laki-laki</span>
+                <form action="proses.php" method="POST" class="px-8 py-3" id="formRegistrasi">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <!-- Nama Lengkap -->
+                        <div class="form-group">
+                            <label for="nama" class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-user mr-2" style="color: #ec268f;"></i> Nama Lengkap
                             </label>
-                            <label class="flex items-center bg-gray-50 hover:bg-pink-50 px-5 py-3 rounded-xl cursor-pointer transition-colors duration-300">
-                                <input type="radio" name="jenis_kelamin" value="P" required class="mr-3 h-5 w-5" style="accent-color: #ec268f;">
-                                <span class="text-gray-700 font-medium">Perempuan</span>
+                            <input type="text" id="nama" name="nama" required
+                                class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#ec268f] focus:ring-2 focus:ring-[#ec268f] transition-all duration-300"
+                                placeholder="Masukkan nama lengkap Anda">
+                        </div>
+
+                        <!-- Jenis Kelamin -->
+                        <div class="form-group">
+                            <label class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-venus-mars mr-2" style="color: #ec268f;"></i> Jenis Kelamin
                             </label>
+                            <div class="flex mx-auto grid grid-cols-2 gap-4">
+                                <label class="flex items-center text-sm bg-gray-50 hover:bg-pink-50 px-3 py-2 rounded-xl cursor-pointer transition-colors duration-300">
+                                    <input type="radio" name="jenis_kelamin" value="L" required class="mr-3 h-4 w-4" style="accent-color: #ec268f;">
+                                    <span class="text-gray-700 font-small">Lelaki</span>
+                                </label>
+                                <label class="flex items-center text-sm bg-gray-50 hover:bg-pink-50 px-3 py-2 rounded-xl cursor-pointer transition-colors duration-300">
+                                    <input type="radio" name="jenis_kelamin" value="P" required class="mr-3 h-4 w-4" style="accent-color: #ec268f;">
+                                    <span class="text-gray-700 font-small">Perempuan</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Usia -->
+                        <div class="form-group">
+                            <label for="usia" class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-birthday-cake mr-2" style="color: #f58634;"></i> Usia
+                            </label>
+                            <input type="number" id="usia" name="usia" required min="5" max="100"
+                                class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#f58634] focus:ring-2 focus:ring-[#f58634] transition-all duration-300"
+                                placeholder="Masukkan usia Anda">
+                        </div>
+
+                        <!-- No Telepon -->
+                        <div class="form-group">
+                            <label for="no_telepon" class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-phone mr-2" style="color: #f65566;"></i> No. Telepon/WA
+                            </label>
+                            <input type="tel" id="no_telepon" name="no_telepon" required
+                                class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#f65566] focus:ring-2 focus:ring-[#f65566] transition-all duration-300"
+                                placeholder="0812xxxxxxx">
+                        </div>
+
+                        <!-- Alamat/Domisili -->
+                        <div class="form-group md:col-span-2">
+                            <label for="alamat" class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-home mr-2" style="color: #f76a53;" ></i> Alamat/Domisili
+                            </label>
+                            <textarea id="alamat" name="alamat" required rows="2"
+                                class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#f76a53] focus:ring-2 focus:ring-[#f76a53] transition-all duration-300"
+                                placeholder="Masukkan alamat lengkap Anda"></textarea>
+                        </div>
+
+                        <!-- Asal Instansi -->
+                        <div class="form-group">
+                            <label for="asal_instansi" class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-school mr-2" style="color: #f43c7f;"></i> Asal Instansi/Sekolah
+                            </label>
+                            <input type="text" id="asal_instansi" name="asal_instansi" required
+                                class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#f43c7f] focus:ring-2 focus:ring-[#f43c7f] transition-all duration-300"
+                                placeholder="Nama sekolah atau instansi">
+                        </div>
+
+                        <!-- Waktu Kunjungan -->
+                        <div class="form-group">
+                            <label for="waktu_kunjungan" class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-clock mr-2" style="color: #ec268f;" ></i> Waktu Kunjungan
+                            </label>
+                            <select id="waktu_kunjungan" name="waktu_kunjungan" required
+                                class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#ec268f] focus:ring-2 focus:ring-[#ec268f] transition-all duration-300 appearance-none">
+                                <option value="" disabled selected>Pilih waktu kunjungan</option>
+                                <option value="pagi" class="py-2">Pagi (08:00 - 11:00)</option>
+                                <option value="siang" class="py-2">Siang (11:00 - 14:00)</option>
+                                <option value="sore" class="py-2">Sore (14:00 - 17:00)</option>
+                            </select>
+                        </div>
+
+                        <!-- Jenis Pengunjung -->
+                        <div class="form-group md:col-span-2">
+                            <label class="block text-gray-700 font-medium mb-3 text-lg">
+                                <i class="fas fa-users mr-2" style="color: #f58634;" ></i> Jenis Pengunjung
+                            </label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <label class="flex items-center p-2 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#ec268f] hover:bg-pink-50 transition-all duration-300">
+                                    <input type="radio" name="jenis_pengunjung" value="pelajar" required class="mr-2 h-4 w-4" style="accent-color: #ec268f;">
+                                    <div>
+                                        <div class="font-bold text-gray-800">Murid</div>
+                                        <div class="text-sm text-gray-500">Pelajar / Mahasiswa</div>
+                                    </div>
+                                </label>
+
+                                <label class="flex items-center p-2 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#f58634] hover:bg-orange-50 transition-all duration-300">
+                                    <input type="radio" name="jenis_pengunjung" value="guru" required class="mr-2 h-4 w-4" style="accent-color: #f58634;">
+                                    <div>
+                                        <div class="font-bold text-gray-800">Guru</div>
+                                        <div class="text-sm text-gray-500">Tenaga Pendidik</div>
+                                    </div>
+                                </label>
+
+                                <label class="flex items-center p-2 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#f65566] hover:bg-red-50 transition-all duration-300">
+                                    <input type="radio" name="jenis_pengunjung" value="umum" required class="mr-2 h-4 w-4" style="accent-color: #f65566;">
+                                    <div>
+                                        <div class="font-bold text-gray-800">Umum</div>
+                                        <div class="text-sm text-gray-500">Masyarakat Umum</div>
+                                    </div>
+                                </label>
+
+                                <label class="flex items-center p-2 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#f43c7f] hover:bg-pink-50 transition-all duration-300">
+                                    <input type="radio" name="jenis_pengunjung" value="alumni" required class="mr-2 h-4 w-4" style="accent-color: #f43c7f;">
+                                    <div>
+                                        <div class="font-bold text-gray-800">Alumni</div>
+                                        <div class="text-sm text-gray-500">Alumni SMKN 8 Bone</div>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Usia -->
-                    <div class="form-group">
-                        <label for="usia" class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-birthday-cake" style="color: #f58634;" class="mr-2"></i> Usia
-                        </label>
-                        <input type="number" id="usia" name="usia" required min="5" max="100"
-                            class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:border-[#f58634] focus:ring-2 focus:ring-[#f58634] transition-all duration-300"
-                            placeholder="Masukkan usia Anda">
+                    <!-- Tombol Submit -->
+                    <div class="mt-5 pt-4 border-t border-gray-100 text-center">
+                        <button type="submit"
+                            class="btn-primary text-white font-bold px-6 py-2 rounded-xl text-lg inline-flex items-center shadow-lg">
+                            <i class="fas fa-paper-plane mr-3"></i> Daftar Sekarang
+                        </button>
                     </div>
-
-                    <!-- No Telepon -->
-                    <div class="form-group">
-                        <label for="no_telepon" class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-phone" style="color: #f65566;" class="mr-2"></i> No. Telepon/WA
-                        </label>
-                        <input type="tel" id="no_telepon" name="no_telepon" required
-                            class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:border-[#f65566] focus:ring-2 focus:ring-[#f65566] transition-all duration-300"
-                            placeholder="0812xxxxxxx">
-                    </div>
-
-                    <!-- Alamat/Domisili -->
-                    <div class="form-group md:col-span-2">
-                        <label for="alamat" class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-home" style="color: #f76a53;" class="mr-2"></i> Alamat/Domisili
-                        </label>
-                        <textarea id="alamat" name="alamat" required rows="3"
-                            class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:border-[#f76a53] focus:ring-2 focus:ring-[#f76a53] transition-all duration-300"
-                            placeholder="Masukkan alamat lengkap Anda"></textarea>
-                    </div>
-
-                    <!-- Asal Instansi -->
-                    <div class="form-group">
-                        <label for="asal_instansi" class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-school" style="color: #f43c7f;" class="mr-2"></i> Asal Instansi/Sekolah
-                        </label>
-                        <input type="text" id="asal_instansi" name="asal_instansi" required
-                            class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:border-[#f43c7f] focus:ring-2 focus:ring-[#f43c7f] transition-all duration-300"
-                            placeholder="Nama sekolah atau instansi">
-                    </div>
-
-                    <!-- Waktu Kunjungan -->
-                    <div class="form-group">
-                        <label for="waktu_kunjungan" class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-clock" style="color: #ec268f;" class="mr-2"></i> Waktu Kunjungan
-                        </label>
-                        <select id="waktu_kunjungan" name="waktu_kunjungan" required
-                            class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:border-[#ec268f] focus:ring-2 focus:ring-[#ec268f] transition-all duration-300 appearance-none">
-                            <option value="" disabled selected>Pilih waktu kunjungan</option>
-                            <option value="pagi" class="py-2">Pagi (08:00 - 11:00)</option>
-                            <option value="siang" class="py-2">Siang (11:00 - 14:00)</option>
-                            <option value="sore" class="py-2">Sore (14:00 - 17:00)</option>
-                        </select>
-                    </div>
-
-                    <!-- Jenis Pengunjung -->
-                    <div class="form-group md:col-span-2">
-                        <label class="block text-gray-700 font-medium mb-3 text-lg">
-                            <i class="fas fa-users" style="color: #f58634;" class="mr-2"></i> Jenis Pengunjung
-                        </label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#ec268f] hover:bg-pink-50 transition-all duration-300">
-                                <input type="radio" name="jenis_pengunjung" value="siswa" required class="mr-4 h-5 w-5" style="accent-color: #ec268f;">
-                                <div>
-                                    <div class="font-bold text-gray-800">Siswa</div>
-                                    <div class="text-sm text-gray-500 mt-1">Pelajar/Mahasiswa</div>
-                                </div>
-                            </label>
-
-                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#f58634] hover:bg-orange-50 transition-all duration-300">
-                                <input type="radio" name="jenis_pengunjung" value="guru" required class="mr-4 h-5 w-5" style="accent-color: #f58634;">
-                                <div>
-                                    <div class="font-bold text-gray-800">Guru</div>
-                                    <div class="text-sm text-gray-500 mt-1">Tenaga Pendidik</div>
-                                </div>
-                            </label>
-
-                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#f65566] hover:bg-red-50 transition-all duration-300">
-                                <input type="radio" name="jenis_pengunjung" value="umum" required class="mr-4 h-5 w-5" style="accent-color: #f65566;">
-                                <div>
-                                    <div class="font-bold text-gray-800">Umum</div>
-                                    <div class="text-sm text-gray-500 mt-1">Masyarakat Umum</div>
-                                </div>
-                            </label>
-
-                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#f43c7f] hover:bg-pink-50 transition-all duration-300">
-                                <input type="radio" name="jenis_pengunjung" value="alumni" required class="mr-4 h-5 w-5" style="accent-color: #f43c7f;">
-                                <div>
-                                    <div class="font-bold text-gray-800">Alumni</div>
-                                    <div class="text-sm text-gray-500 mt-1">Alumni SMKN 8 Bone</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tombol Submit -->
-                <div class="mt-10 pt-8 border-t border-gray-100 text-center">
-                    <button type="submit"
-                        class="btn-primary text-white font-bold py-4 px-12 rounded-xl text-lg inline-flex items-center shadow-lg">
-                        <i class="fas fa-paper-plane mr-3"></i> Daftar Sekarang
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
 
         <!-- Informasi Acara -->
-        <div class="max-w-4xl mx-auto bg-white rounded-2xl card-shadow p-8 mb-10">
+        <div class="max-w-8xl mx-auto bg-white rounded-2xl card-shadow p-8 mb-5">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
                 <h3 class="text-2xl font-bold text-gray-800">
                     <i class="fas fa-info-circle" style="color: #ec268f;" class="mr-3"></i> Informasi Acara
@@ -269,28 +284,10 @@ require_once 'koneksi.php';
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="text-center p-6 rounded-2xl border" style="background: linear-gradient(135deg, rgba(236, 38, 143, 0.1) 0%, rgba(246, 85, 102, 0.1) 100%); border-color: rgba(236, 38, 143, 0.2);">
-                    <div class="text-4xl font-bold mb-3" style="color: #ec268f;">GERKA 2025</div>
-                    <div class="text-gray-700 font-medium">Gelar Karya Siswa</div>
-                    <div class="text-sm text-gray-500 mt-2">Pameran karya terbaik siswa SMKN 8 Bone</div>
-                </div>
-                <div class="text-center p-6 rounded-2xl border" style="background: linear-gradient(135deg, rgba(245, 134, 52, 0.1) 0%, rgba(247, 106, 83, 0.1) 100%); border-color: rgba(245, 134, 52, 0.2);">
-                    <div class="text-3xl font-bold mb-3" style="color: #f58634;">SMKN 8 Bone</div>
-                    <div class="text-gray-700 font-medium">Sekolah Menengah Kejuruan</div>
-                    <div class="text-sm text-gray-500 mt-2">Mencetak generasi profesional dan kreatif</div>
-                </div>
-                <div class="text-center p-6 rounded-2xl border" style="background: linear-gradient(135deg, rgba(244, 60, 127, 0.1) 0%, rgba(246, 85, 102, 0.1) 100%); border-color: rgba(244, 60, 127, 0.2);">
-                    <div class="text-2xl font-bold mb-3" style="color: #f43c7f;">Berkarya & Inovasi</div>
-                    <div class="text-gray-700 font-medium">Membangun Generasi Kreatif</div>
-                    <div class="text-sm text-gray-500 mt-2">Inovasi teknologi dan kewirausahaan</div>
-                </div>
-            </div>
-
             <!-- Detail Acara -->
             <div class="p-6 rounded-2xl border" style="background: linear-gradient(to right, rgba(236, 38, 143, 0.05), rgba(245, 134, 52, 0.05)); border-color: rgba(236, 38, 143, 0.1);">
                 <h4 class="font-bold text-xl text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-calendar-alt" style="color: #f65566;" class="mr-3"></i> Detail Pelaksanaan
+                    <i class="fas fa-calendar-alt mr-3" style="color: #f65566;"></i>Detail Pelaksanaan
                 </h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
@@ -300,7 +297,7 @@ require_once 'koneksi.php';
                             </div>
                             <div>
                                 <div class="font-medium text-gray-700">Tanggal</div>
-                                <div class="text-gray-900 font-bold">25-27 Oktober 2025</div>
+                                <div class="text-gray-900 font-bold">11 Desember 2025</div>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -320,7 +317,7 @@ require_once 'koneksi.php';
                             </div>
                             <div>
                                 <div class="font-medium text-gray-700">Lokasi</div>
-                                <div class="text-gray-900 font-bold">SMKN 8 Bone, Jl. Pendidikan No. 123</div>
+                                <div class="text-gray-900 font-bold">SMKN 8 Bone, Jl. Poros Bone-Sengkang</div>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -339,10 +336,10 @@ require_once 'koneksi.php';
 
         <!-- Footer -->
         <footer class="text-center text-gray-600">
-            <div class="bg-white rounded-2xl card-shadow p-8 max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl card-shadow p-8 max-w-8xl mx-auto">
                 <div class="mb-6">
                     <h4 class="text-2xl font-bold mb-3 text-gradient-primary">GERKA 2025</h4>
-                    <p class="text-gray-700">Gelar Karya SMKN 8 Bone - Wadah apresiasi karya siswa berbasis teknologi dan kewirausahaan</p>
+                    <p class="text-gray-700">Gelar Karya SMKN 8 Bone - Wadah apresiasi karya murid berbasis teknologi dan kewirausahaan</p>
                 </div>
                 <div class="border-t border-gray-200 pt-6">
                     <p class="mb-2">© 2025 GERKA - Gelar Karya SMKN 8 Bone. All rights reserved.</p>

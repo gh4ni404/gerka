@@ -41,6 +41,11 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pengunjung GERKA 2025 - SMKN 8 Bone</title>
+
+    <link rel="shortcut icon" href="assets/images/logo32.png" />
+    <link rel="icon" href="assets/images/logo192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="assets/images/logo180.png" sizes="180x180" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -102,10 +107,27 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
 </head>
 
 <body class="min-h-screen">
-    <div class="container mx-auto px-4 py-8">
+    <!-- Navbar -->
+    <nav class="bg-neutral-primary border-default">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
+            <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="assets/images/logo540.png" class="h-7" alt="Gerka Logo" />
+                <span class="self-center text-xl font-semibold whitespace-nowrap text-heading">GERKA 2025</span>
+            </a>
+            <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
+                <a href="#" class="px-3 py-2 text-sm rounded-xl font-bold border" style="background: rgba(236, 38, 143, 0.1); border-color: rgba(236, 38, 143, 0.2); color: #ec268f;">
+                    <i class="fas fa-user-friends mr-2"></i> Total: <?php echo $total_pengunjung; ?> Visitor
+                </a>
+                <a href="index.php" class="btn-primary text-white text-sm font-bold px-3 py-2 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto px-2 py-2">
         <!-- Header -->
-        <header class="text-center mb-10 bg-white rounded-2xl card-shadow p-8 max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+        <header class="text-center mb-5 bg-white rounded-2xl card-shadow p-8 max-w-8xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center mb-4 md:mb-0">
                     <div class="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mr-4">
                         <i class="fas fa-users text-white text-2xl"></i>
@@ -115,80 +137,11 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                         <p class="text-gray-700">GERKA 2025 - SMKN 8 Bone</p>
                     </div>
                 </div>
-
-                <div class="flex flex-wrap gap-4">
-                    <div class="px-5 py-3 rounded-xl font-bold border" style="background: rgba(236, 38, 143, 0.1); border-color: rgba(236, 38, 143, 0.2); color: #ec268f;">
-                        <i class="fas fa-user-friends mr-2"></i> Total: <?php echo $total_pengunjung; ?> Pengunjung
-                    </div>
-                    <a href="index.php" class="btn-primary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
-                        <i class="fas fa-arrow-left mr-2"></i> Kembali ke Form Registrasi
-                    </a>
-                </div>
-            </div>
-
-            <div class="flex justify-center mt-6">
-                <div class="px-5 py-3 rounded-xl font-bold border" style="background: rgba(236, 38, 143, 0.1); border-color: rgba(236, 38, 143, 0.2); color: #ec268f;">
-                    <i class="fas fa-user-friends mr-2"></i> Total: <?php echo $total_pengunjung; ?> Pengunjung
-                </div>
-                <a href="index.php" class="btn-primary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
-                    <i class="fas fa-arrow-left mr-2"></i> Kembali ke Form Registrasi
-                </a>
             </div>
         </header>
 
-        <!-- Statistik Utama -->
-        <div class="max-w-6xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(236, 38, 143, 0.1);">
-                        <i class="fas fa-male text-xl" style="color: #ec268f;"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-gray-800"><?php echo $stats['laki_laki']; ?></div>
-                        <div class="text-gray-600">Laki-laki</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(245, 134, 52, 0.1);">
-                        <i class="fas fa-female text-xl" style="color: #f58634;"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-gray-800"><?php echo $stats['perempuan']; ?></div>
-                        <div class="text-gray-600">Perempuan</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(246, 85, 102, 0.1);">
-                        <i class="fas fa-user-graduate text-xl" style="color: #f65566;"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-gray-800"><?php echo $stats['siswa']; ?></div>
-                        <div class="text-gray-600">Siswa</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(247, 106, 83, 0.1);">
-                        <i class="fas fa-chalkboard-teacher text-xl" style="color: #f76a53;"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-gray-800"><?php echo $stats['guru']; ?></div>
-                        <div class="text-gray-600">Guru</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Statistik Detail -->
-        <div class="max-w-6xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="max-w-8xl mx-auto mb-5 grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="bg-white rounded-2xl card-shadow p-6">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
                     <i class="fas fa-users mr-3" style="color: #ec268f;"></i> Jenis Pengunjung
@@ -325,7 +278,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
         </div>
 
         <!-- Tabel Pengunjung -->
-        <div class="max-w-6xl mx-auto bg-white rounded-2xl card-shadow overflow-hidden mb-10">
+        <div class="max-w-8xl mx-auto bg-white rounded-2xl card-shadow overflow-hidden mb-5">
             <div class="gradient-primary px-8 py-6">
                 <h3 class="text-2xl font-bold text-white">Data Pengunjung Terdaftar</h3>
                 <p class="text-pink-100 text-sm mt-1">Total <?php echo $total_pengunjung; ?> pengunjung telah mendaftar</p>
@@ -336,15 +289,15 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">No</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Nama</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">JK</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Usia</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Telepon</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Asal Instansi</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Jenis</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Waktu</th>
-                                <th scope="col" class="px-8 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Tanggal Daftar</th>
+                                <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">No</th>
+                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Nama</th>
+                                <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">JK</th>
+                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Usia</th>
+                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Telepon</th>
+                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Asal Instansi</th>
+                                <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">Jenis</th>
+                                <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">Waktu</th>
+                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Tanggal Daftar</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -370,29 +323,29 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                                 $tanggal = date('d-m-Y H:i', strtotime($row['tanggal_daftar']));
                             ?>
                                 <tr class="table-row transition-colors duration-200">
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?php echo $no++; ?></td>
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm font-bold text-gray-900"><?php echo htmlspecialchars($row['nama']); ?></td>
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700">
+                                    <td class="px-4 py-2 text-center whitespace-nowrap text-sm font-medium text-gray-900"><?php echo $no++; ?></td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900"><?php echo htmlspecialchars($row['nama']); ?></td>
+                                    <td class="px-4 py-2 text-center whitespace-nowrap text-sm text-gray-700">
                                         <?php if ($row['jenis_kelamin'] == 'L'): ?>
                                             <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(236, 38, 143, 0.1); color: #ec268f; border: 1px solid rgba(236, 38, 143, 0.2);">Laki-laki</span>
                                         <?php else: ?>
                                             <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(245, 134, 52, 0.1); color: #f58634; border: 1px solid rgba(245, 134, 52, 0.2);">Perempuan</span>
                                         <?php endif; ?>
                                     </td>
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700 font-medium"><?php echo $row['usia']; ?> tahun</td>
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700"><?php echo htmlspecialchars($row['no_telepon']); ?></td>
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700 max-w-xs"><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
-                                    <td class="px-8 py-4 whitespace-nowrap">
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700 font-medium"><?php echo $row['usia']; ?> thn</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700"><?php echo htmlspecialchars($row['no_telepon']); ?></td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700 max-w-xs"><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
+                                    <td class="px-4 py-2 text-center whitespace-nowrap">
                                         <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $badge_styles; ?>">
                                             <?php echo ucfirst($row['jenis_pengunjung']); ?>
                                         </span>
                                     </td>
-                                    <td class="px-8 py-4 whitespace-nowrap">
+                                    <td class="px-4 py-2 text-center whitespace-nowrap">
                                         <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $waktu_styles; ?>">
                                             <?php echo ucfirst($row['waktu_kunjungan']); ?>
                                         </span>
                                     </td>
-                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-600"><?php echo $tanggal; ?></td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-600"><?php echo $tanggal; ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>
