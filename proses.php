@@ -3,7 +3,6 @@ require_once 'koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil dan bersihkan data input
-    $nik = bersihkan_input($_POST['nik']);
     $nama = bersihkan_input($_POST['nama']);
     $jenis_kelamin = bersihkan_input($_POST['jenis_kelamin']);
     $usia = bersihkan_input($_POST['usia']);
@@ -12,15 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $asal_instansi = bersihkan_input($_POST['asal_instansi']);
     $jenis_pengunjung = bersihkan_input($_POST['jenis_pengunjung']);
     $waktu_kunjungan = bersihkan_input($_POST['waktu_kunjungan']);
-    $setuju_data = isset($_POST['setuju_data']) ? 1 : 0;
     
     // Validasi data
     $errors = [];
-    
-    // Validasi NIK (16 digit angka)
-    if (!preg_match('/^[0-9]{16}$/', $nik)) {
-        $errors[] = "NIK harus terdiri dari 16 digit angka";
-    }
     
     // Validasi nama (minimal 3 karakter)
     if (strlen($nama) < 3) {
@@ -47,45 +40,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "Asal instansi harus minimal 3 karakter";
     }
     
-    // Validasi persetujuan
-    if (!$setuju_data) {
-        $errors[] = "Anda harus menyetujui pernyataan penggunaan data";
-    }
-    
-    // Cek apakah NIK sudah terdaftar (untuk mencegah duplikasi)
-    $sql_cek = "SELECT id FROM pengunjung WHERE nik = ?";
-    $stmt_cek = mysqli_prepare($conn, $sql_cek);
-    mysqli_stmt_bind_param($stmt_cek, "s", $nik);
-    mysqli_stmt_execute($stmt_cek);
-    mysqli_stmt_store_result($stmt_cek);
-    
-    if (mysqli_stmt_num_rows($stmt_cek) > 0) {
-        $errors[] = "NIK sudah terdaftar. Pengunjung dengan NIK ini sudah terdaftar sebelumnya.";
-    }
-    mysqli_stmt_close($stmt_cek);
-    
-    // Cek apakah nomor telepon sudah terdaftar (opsional, untuk validasi tambahan)
-    $sql_cek_telp = "SELECT id FROM pengunjung WHERE no_telepon = ?";
-    $stmt_cek_telp = mysqli_prepare($conn, $sql_cek_telp);
-    mysqli_stmt_bind_param($stmt_cek_telp, "s", $no_telepon);
-    mysqli_stmt_execute($stmt_cek_telp);
-    mysqli_stmt_store_result($stmt_cek_telp);
-    
-    if (mysqli_stmt_num_rows($stmt_cek_telp) > 0) {
-        $errors[] = "Nomor telepon sudah terdaftar. Silakan gunakan nomor telepon lain.";
-    }
-    mysqli_stmt_close($stmt_cek_telp);
-    
     // Jika tidak ada error, simpan ke database
     if (empty($errors)) {
-        $sql = "INSERT INTO pengunjung (nik, nama, jenis_kelamin, usia, no_telepon, alamat, asal_instansi, jenis_pengunjung, waktu_kunjungan, setuju_data) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO pengunjung (nama, jenis_kelamin, usia, no_telepon, alamat, asal_instansi, jenis_pengunjung, waktu_kunjungan) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "sssisssssi", $nik, $nama, $jenis_kelamin, $usia, $no_telepon, $alamat, $asal_instansi, $jenis_pengunjung, $waktu_kunjungan, $setuju_data);
+        mysqli_stmt_bind_param($stmt, "ssisssss", $nama, $jenis_kelamin, $usia, $no_telepon, $alamat, $asal_instansi, $jenis_pengunjung, $waktu_kunjungan);
         
         if (mysqli_stmt_execute($stmt)) {
-            $_SESSION['sukses'] = "Registrasi berhasil! Terima kasih $nama telah mendaftar sebagai pengunjung GERKA 2025. NIK Anda: $nik";
+            $_SESSION['sukses'] = "Registrasi berhasil! Terima kasih <strong>$nama</strong> telah mendaftar sebagai pengunjung GERKA 2025. Silakan datang sesuai waktu kunjungan yang Anda pilih.";
             mysqli_stmt_close($stmt);
             header("Location: index.php");
             exit();
