@@ -291,9 +291,9 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                             <tr>
                                 <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">No</th>
                                 <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Nama</th>
-                                <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">JK</th>
+                                <!-- <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">JK</th>
                                 <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Usia</th>
-                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Telepon</th>
+                                <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Telepon</th> -->
                                 <th scope="col" class="px-4 py-2 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Asal Instansi</th>
                                 <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">Jenis</th>
                                 <th scope="col" class="px-4 py-2 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">Waktu</th>
@@ -325,7 +325,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                                 <tr class="table-row transition-colors duration-200">
                                     <td class="px-4 py-2 text-center whitespace-nowrap text-sm font-medium text-gray-900"><?php echo $no++; ?></td>
                                     <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900"><?php echo htmlspecialchars($row['nama']); ?></td>
-                                    <td class="px-4 py-2 text-center whitespace-nowrap text-sm text-gray-700">
+                                    <!-- <td class="px-4 py-2 text-center whitespace-nowrap text-sm text-gray-700">
                                         <?php if ($row['jenis_kelamin'] == 'L'): ?>
                                             <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(236, 38, 143, 0.1); color: #ec268f; border: 1px solid rgba(236, 38, 143, 0.2);">Laki-laki</span>
                                         <?php else: ?>
@@ -333,7 +333,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                                         <?php endif; ?>
                                     </td>
                                     <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700 font-medium"><?php echo $row['usia']; ?> thn</td>
-                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700"><?php echo htmlspecialchars($row['no_telepon']); ?></td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700"><?php echo htmlspecialchars($row['no_telepon']); ?></td> -->
                                     <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-700 max-w-xs"><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
                                     <td class="px-4 py-2 text-center whitespace-nowrap">
                                         <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $badge_styles; ?>">
