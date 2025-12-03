@@ -373,9 +373,6 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     Data diperbarui secara real-time
                 </div>
                 <div class="flex gap-4">
-                    <a href="#" onclick="window.print()" class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition duration-300 shadow-md">
-                        <i class="fas fa-print mr-2"></i> Cetak Laporan
-                    </a>
                     <a href="export.php" class="btn-secondary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
                         <i class="fas fa-file-excel mr-2"></i> Export Excel
                     </a>
