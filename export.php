@@ -2,7 +2,7 @@
 require_once 'koneksi.php';
 
 // Query untuk mengambil data pengunjung
-$sql = "SELECT * FROM pengunjung ORDER BY hari_tanggal DESC, waktu_masuk DESC";
+$sql = "SELECT * FROM pengunjung ORDER BY tanggal_daftar DESC";
 $result = mysqli_query($conn, $sql);
 
 // Set header untuk file Excel
@@ -15,48 +15,35 @@ header('Expires: 0');
 <html>
 <head>
     <meta charset="UTF-8">
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th { background-color: #4F81BD; color: white; font-weight: bold; }
-        td, th { border: 1px solid #ddd; padding: 8px; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-    </style>
 </head>
 <body>
-    <table>
+    <table border="1">
         <tr>
-            <th colspan="9" style="background-color: #4F81BD; color: white; font-size: 18px; padding: 10px;">
+            <th colspan="7" style="background-color: #4F81BD; color: white; font-size: 18px; padding: 10px;">
                 DATA PENGGUNA GERKA 2025 - SMKN 8 BONE
             </th>
         </tr>
         <tr>
             <th>No</th>
             <th>Nama</th>
-            <th>Jenis Kelamin</th>
-            <th>Usia</th>
-            <th>Alamat</th>
+            <th>Email</th>
             <th>Telepon</th>
-            <th>Tujuan Kunjungan</th>
-            <th>Hari/Tanggal</th>
-            <th>Waktu Masuk</th>
+            <th>Asal Instansi</th>
+            <th>Jenis Pengunjung</th>
+            <th>Tanggal Daftar</th>
         </tr>
         <?php
         $no = 1;
         while ($row = mysqli_fetch_assoc($result)):
-            $jenis_kelamin = $row['jenis_kelamin'] == 'L' ? 'Laki-laki' : 'Perempuan';
-            $hari_tanggal = date('d-m-Y', strtotime($row['hari_tanggal']));
-            $waktu_masuk = date('H:i', strtotime($row['waktu_masuk']));
         ?>
         <tr>
             <td><?php echo $no++; ?></td>
             <td><?php echo htmlspecialchars($row['nama']); ?></td>
-            <td><?php echo $jenis_kelamin; ?></td>
-            <td><?php echo htmlspecialchars($row['usia']); ?></td>
-            <td><?php echo htmlspecialchars($row['alamat']); ?></td>
+            <td><?php echo htmlspecialchars($row['email']); ?></td>
             <td><?php echo htmlspecialchars($row['no_telepon']); ?></td>
-            <td><?php echo htmlspecialchars($row['tujuan_kunjungan']); ?></td>
-            <td><?php echo $hari_tanggal; ?></td>
-            <td><?php echo $waktu_masuk; ?></td>
+            <td><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
+            <td><?php echo ucfirst($row['jenis_pengunjung']); ?></td>
+            <td><?php echo date('d-m-Y H:i', strtotime($row['tanggal_daftar'])); ?></td>
         </tr>
         <?php endwhile; ?>
     </table>
