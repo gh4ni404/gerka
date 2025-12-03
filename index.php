@@ -83,7 +83,7 @@ require_once 'koneksi.php';
     <div class="container mx-auto px-4 py-8">
         <!-- Header dengan background gradient -->
         <header class="text-center mb-5 bg-white rounded-2xl card-shadow p-8 max-w-8xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-center items-center mb-6">
+            <div class="flex flex-col md:flex-row justify-center items-center">
                 <div class="w-20 h-20 card-shadow  rounded-full flex items-center justify-center mr-0 md:mr-6 mb-4 md:mb-0" style="border-width: 1px; border-color: #ec268f; border-style: solid; background: white;">
                     <img src="assets/images/logo540.png" alt="logo">
                 </div>
@@ -92,8 +92,6 @@ require_once 'koneksi.php';
                     <p class="text-xl text-gray-700 mt-2">Gelar Karya SMKN 8 Bone</p>
                 </div>
             </div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Registrasi Pengunjung</h2>
-            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Daftarkan diri Anda untuk menghadiri Gelar Karya 2025. Isi data diri dengan lengkap dan benar.</p>
         </header>
 
         <!-- Notifikasi -->
@@ -134,7 +132,7 @@ require_once 'koneksi.php';
             <!-- Form Registrasi -->
             <div class="max-w-4xl mx-auto bg-white rounded-2xl card-shadow overflow-hidden">
                 <div class="gradient-primary px-8 py-6">
-                    <h3 class="text-2xl font-bold text-white">Form Pendaftaran</h3>
+                    <h3 class="text-2xl font-bold text-white">Registrasi Pengunjung</h3>
                     <p class="text-pink-100 text-sm mt-1">Isi data diri dengan lengkap dan benar</p>
                 </div>
 
@@ -190,7 +188,7 @@ require_once 'koneksi.php';
                         <!-- Alamat/Domisili -->
                         <div class="form-group md:col-span-2">
                             <label for="alamat" class="block text-gray-700 font-medium mb-3 text-lg">
-                                <i class="fas fa-home mr-2" style="color: #f76a53;" ></i> Alamat/Domisili
+                                <i class="fas fa-home mr-2" style="color: #f76a53;"></i> Alamat/Domisili
                             </label>
                             <textarea id="alamat" name="alamat" required rows="2"
                                 class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#f76a53] focus:ring-2 focus:ring-[#f76a53] transition-all duration-300"
@@ -210,7 +208,7 @@ require_once 'koneksi.php';
                         <!-- Waktu Kunjungan -->
                         <div class="form-group">
                             <label for="waktu_kunjungan" class="block text-gray-700 font-medium mb-3 text-lg">
-                                <i class="fas fa-clock mr-2" style="color: #ec268f;" ></i> Waktu Kunjungan
+                                <i class="fas fa-clock mr-2" style="color: #ec268f;"></i> Waktu Kunjungan
                             </label>
                             <select id="waktu_kunjungan" name="waktu_kunjungan" required
                                 class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#ec268f] focus:ring-2 focus:ring-[#ec268f] transition-all duration-300 appearance-none">
@@ -224,7 +222,7 @@ require_once 'koneksi.php';
                         <!-- Jenis Pengunjung -->
                         <div class="form-group md:col-span-2">
                             <label class="block text-gray-700 font-medium mb-3 text-lg">
-                                <i class="fas fa-users mr-2" style="color: #f58634;" ></i> Jenis Pengunjung
+                                <i class="fas fa-users mr-2" style="color: #f58634;"></i> Jenis Pengunjung
                             </label>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 <label class="flex items-center p-2 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#ec268f] hover:bg-pink-50 transition-all duration-300">
