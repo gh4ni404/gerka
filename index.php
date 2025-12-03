@@ -180,7 +180,7 @@ require_once 'koneksi.php';
                             <label for="no_telepon" class="block text-gray-700 font-medium mb-3 text-lg">
                                 <i class="fas fa-phone mr-2" style="color: #f65566;"></i> No. Telepon/WA
                             </label>
-                            <input type="tel" id="no_telepon" name="no_telepon" required
+                            <input type="tel" id="no_telepon" name="no_telepon" 
                                 class="w-full px-3 py-2 border-2 border-gray-200 rounded-xl focus:border-[#f65566] focus:ring-2 focus:ring-[#f65566] transition-all duration-300"
                                 placeholder="0812xxxxxxx">
                         </div>
@@ -389,8 +389,8 @@ require_once 'koneksi.php';
                 return false;
             }
 
-            // Validasi alamat (minimal 10 karakter)
-            if (alamat.length < 10) {
+            // Validasi alamat (minimal 3 karakter)
+            if (alamat.length < 3) {
                 e.preventDefault();
                 showAlert('Alamat harus minimal 10 karakter!', 'error');
                 return false;

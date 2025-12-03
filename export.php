@@ -19,21 +19,21 @@ header('Expires: 0');
 <body>
     <table border="1">
         <tr>
-            <th colspan="10" style="background: linear-gradient(to right, #ec268f, #f65566); color: white; font-size: 18px; padding: 12px;">
+            <th colspan="9" style="background-color: #4F81BD; color: white; font-size: 18px; padding: 10px;">
                 DATA PENGGUNA GERKA 2025 - SMKN 8 BONE
             </th>
         </tr>
         <tr>
-            <th style="background-color: #f9f9f9; padding: 8px;">No</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Nama</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Jenis Kelamin</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Usia</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Telepon</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Alamat</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Asal Instansi</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Jenis Pengunjung</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Waktu Kunjungan</th>
-            <th style="background-color: #f9f9f9; padding: 8px;">Tanggal Daftar</th>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Jenis Kelamin</th>
+            <th>Usia</th>
+            <th>Telepon</th>
+            <th>Alamat</th>
+            <th>Asal Instansi</th>
+            <th>Jenis Pengunjung</th>
+            <th>Waktu Kunjungan</th>
+            <th>Tanggal Daftar</th>
         </tr>
         <?php
         $no = 1;
@@ -41,16 +41,16 @@ header('Expires: 0');
             $jenis_kelamin = $row['jenis_kelamin'] == 'L' ? 'Laki-laki' : 'Perempuan';
         ?>
         <tr>
-            <td style="padding: 6px;"><?php echo $no++; ?></td>
-            <td style="padding: 6px;"><?php echo htmlspecialchars($row['nama']); ?></td>
-            <td style="padding: 6px;"><?php echo $jenis_kelamin; ?></td>
-            <td style="padding: 6px;"><?php echo $row['usia']; ?></td>
-            <td style="padding: 6px;"><?php echo htmlspecialchars($row['no_telepon']); ?></td>
-            <td style="padding: 6px;"><?php echo htmlspecialchars($row['alamat']); ?></td>
-            <td style="padding: 6px;"><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
-            <td style="padding: 6px;"><?php echo ucfirst($row['jenis_pengunjung']); ?></td>
-            <td style="padding: 6px;"><?php echo ucfirst($row['waktu_kunjungan']); ?></td>
-            <td style="padding: 6px;"><?php echo date('d-m-Y H:i', strtotime($row['tanggal_daftar'])); ?></td>
+            <td><?php echo $no++; ?></td>
+            <td><?php echo htmlspecialchars($row['nama']); ?></td>
+            <td><?php echo $jenis_kelamin; ?></td>
+            <td><?php echo $row['usia']; ?></td>
+            <td><?php echo htmlspecialchars($row['no_telepon']); ?></td>
+            <td><?php echo htmlspecialchars($row['alamat']); ?></td>
+            <td><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
+            <td><?php echo ucfirst($row['jenis_pengunjung']); ?></td>
+            <td><?php echo ucfirst($row['waktu_kunjungan']); ?></td>
+            <td><?php echo date('d-m-Y H:i', strtotime($row['tanggal_daftar'])); ?></td>
         </tr>
         <?php endwhile; ?>
     </table>
