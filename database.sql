@@ -1,6 +1,6 @@
 -- Buat database
-CREATE DATABASE IF NOT EXISTS gerka_2025;
-USE gerka_2025;
+CREATE DATABASE IF NOT EXISTS smknbone_gerka;
+USE smknbone_gerka;
 
 -- Buat tabel pengunjung
 CREATE TABLE IF NOT EXISTS pengunjung (
