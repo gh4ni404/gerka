@@ -10,8 +10,8 @@ $username = "smknbone_gerka"; // Ganti dengan username database Anda
 $password = "Muh4mm4d123!@"; // Ganti dengan password database Anda
 
 // untuk localhost
-// $username = "smknbone_gerka"; // Ganti dengan username database Anda
-// $password = "Muh4mm4d123!@"; // Ganti dengan password database Anda
+// $username = "root"; // Ganti dengan username database Anda
+// $password = ""; // Ganti dengan password database Anda
 
 // Membuat koneksi
 $conn = mysqli_connect($host, $username, $password, $database);

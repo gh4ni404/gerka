@@ -36,6 +36,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,42 +45,53 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        body { 
-            font-family: 'Poppins', sans-serif; 
+
+        body {
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #fef0f5 0%, #fff5f0 100%);
             min-height: 100vh;
         }
+
         .card-shadow {
             box-shadow: 0 10px 30px rgba(236, 38, 143, 0.1);
         }
+
         .stat-card {
             transition: transform 0.3s ease;
         }
+
         .stat-card:hover {
             transform: translateY(-5px);
         }
+
         .table-row:hover {
             background-color: rgba(236, 38, 143, 0.05);
         }
+
         .btn-primary {
             background: linear-gradient(to right, #ec268f, #f65566);
             transition: all 0.3s ease;
         }
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 7px 14px rgba(236, 38, 143, 0.3);
         }
+
         .btn-secondary {
             background: linear-gradient(to right, #f58634, #f76a53);
             transition: all 0.3s ease;
         }
+
         .btn-secondary:hover {
             transform: translateY(-2px);
             box-shadow: 0 7px 14px rgba(245, 134, 52, 0.3);
         }
+
         .gradient-primary {
             background: linear-gradient(to right, #ec268f, #f65566);
         }
+
         .text-gradient-primary {
             background: linear-gradient(to right, #ec268f, #f65566);
             -webkit-background-clip: text;
@@ -88,6 +100,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
         }
     </style>
 </head>
+
 <body class="min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <!-- Header -->
@@ -102,21 +115,27 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                         <p class="text-gray-700">GERKA 2025 - SMKN 8 Bone</p>
                     </div>
                 </div>
-                
+
                 <div class="flex flex-wrap gap-4">
                     <div class="px-5 py-3 rounded-xl font-bold border" style="background: rgba(236, 38, 143, 0.1); border-color: rgba(236, 38, 143, 0.2); color: #ec268f;">
                         <i class="fas fa-user-friends mr-2"></i> Total: <?php echo $total_pengunjung; ?> Pengunjung
                     </div>
+                    <a href="index.php" class="btn-primary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Kembali ke Form Registrasi
+                    </a>
                 </div>
             </div>
-            
+
             <div class="flex justify-center mt-6">
+                <div class="px-5 py-3 rounded-xl font-bold border" style="background: rgba(236, 38, 143, 0.1); border-color: rgba(236, 38, 143, 0.2); color: #ec268f;">
+                    <i class="fas fa-user-friends mr-2"></i> Total: <?php echo $total_pengunjung; ?> Pengunjung
+                </div>
                 <a href="index.php" class="btn-primary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
                     <i class="fas fa-arrow-left mr-2"></i> Kembali ke Form Registrasi
                 </a>
             </div>
         </header>
-        
+
         <!-- Statistik Utama -->
         <div class="max-w-6xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
@@ -130,7 +149,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(245, 134, 52, 0.1);">
@@ -142,7 +161,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(246, 85, 102, 0.1);">
@@ -154,7 +173,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white rounded-2xl card-shadow p-6 stat-card">
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style="background: rgba(247, 106, 83, 0.1);">
@@ -167,7 +186,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                 </div>
             </div>
         </div>
-        
+
         <!-- Statistik Detail -->
         <div class="max-w-6xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white rounded-2xl card-shadow p-6">
@@ -217,7 +236,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white rounded-2xl card-shadow p-6">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
                     <i class="fas fa-clock mr-3" style="color: #f58634;"></i> Waktu Kunjungan
@@ -255,7 +274,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white rounded-2xl card-shadow p-6">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
                     <i class="fas fa-chart-pie mr-3" style="color: #f76a53;"></i> Distribusi Usia
@@ -264,7 +283,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                     <div class="flex justify-between items-center">
                         <div class="flex items-center">
                             <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ec268f;"></div>
-                            <span class="text-gray-700">Anak/Remaja (<18)</span>
+                            <span class="text-gray-700">Anak/Remaja (<18)< /span>
                         </div>
                         <div class="flex items-center">
                             <span class="font-bold mr-2" style="color: #ec268f;"><?php echo $usia_stats['anak_remaja']; ?></span>
@@ -304,14 +323,14 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                 </div>
             </div>
         </div>
-        
+
         <!-- Tabel Pengunjung -->
         <div class="max-w-6xl mx-auto bg-white rounded-2xl card-shadow overflow-hidden mb-10">
             <div class="gradient-primary px-8 py-6">
                 <h3 class="text-2xl font-bold text-white">Data Pengunjung Terdaftar</h3>
                 <p class="text-pink-100 text-sm mt-1">Total <?php echo $total_pengunjung; ?> pengunjung telah mendaftar</p>
             </div>
-            
+
             <?php if ($total_pengunjung > 0): ?>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
@@ -329,9 +348,9 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <?php 
+                            <?php
                             $no = 1;
-                            while ($row = mysqli_fetch_assoc($result)): 
+                            while ($row = mysqli_fetch_assoc($result)):
                                 // Tentukan warna badge berdasarkan jenis pengunjung
                                 $badge_styles = [
                                     'siswa' => 'background-color: rgba(236, 38, 143, 0.1); color: #ec268f; border-color: rgba(236, 38, 143, 0.2);',
@@ -339,42 +358,42 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                                     'umum' => 'background-color: rgba(246, 85, 102, 0.1); color: #f65566; border-color: rgba(246, 85, 102, 0.2);',
                                     'alumni' => 'background-color: rgba(244, 60, 127, 0.1); color: #f43c7f; border-color: rgba(244, 60, 127, 0.2);'
                                 ][$row['jenis_pengunjung']];
-                                
+
                                 // Warna badge waktu kunjungan
                                 $waktu_styles = [
                                     'pagi' => 'background-color: rgba(245, 134, 52, 0.1); color: #f58634; border-color: rgba(245, 134, 52, 0.2);',
                                     'siang' => 'background-color: rgba(246, 85, 102, 0.1); color: #f65566; border-color: rgba(246, 85, 102, 0.2);',
                                     'sore' => 'background-color: rgba(244, 60, 127, 0.1); color: #f43c7f; border-color: rgba(244, 60, 127, 0.2);'
                                 ][$row['waktu_kunjungan']];
-                                
+
                                 // Format tanggal
                                 $tanggal = date('d-m-Y H:i', strtotime($row['tanggal_daftar']));
                             ?>
-                            <tr class="table-row transition-colors duration-200">
-                                <td class="px-8 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?php echo $no++; ?></td>
-                                <td class="px-8 py-4 whitespace-nowrap text-sm font-bold text-gray-900"><?php echo htmlspecialchars($row['nama']); ?></td>
-                                <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700">
-                                    <?php if($row['jenis_kelamin'] == 'L'): ?>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(236, 38, 143, 0.1); color: #ec268f; border: 1px solid rgba(236, 38, 143, 0.2);">Laki-laki</span>
-                                    <?php else: ?>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(245, 134, 52, 0.1); color: #f58634; border: 1px solid rgba(245, 134, 52, 0.2);">Perempuan</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700 font-medium"><?php echo $row['usia']; ?> tahun</td>
-                                <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700"><?php echo htmlspecialchars($row['no_telepon']); ?></td>
-                                <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700 max-w-xs"><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
-                                <td class="px-8 py-4 whitespace-nowrap">
-                                    <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $badge_styles; ?>">
-                                        <?php echo ucfirst($row['jenis_pengunjung']); ?>
-                                    </span>
-                                </td>
-                                <td class="px-8 py-4 whitespace-nowrap">
-                                    <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $waktu_styles; ?>">
-                                        <?php echo ucfirst($row['waktu_kunjungan']); ?>
-                                    </span>
-                                </td>
-                                <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-600"><?php echo $tanggal; ?></td>
-                            </tr>
+                                <tr class="table-row transition-colors duration-200">
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?php echo $no++; ?></td>
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm font-bold text-gray-900"><?php echo htmlspecialchars($row['nama']); ?></td>
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700">
+                                        <?php if ($row['jenis_kelamin'] == 'L'): ?>
+                                            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(236, 38, 143, 0.1); color: #ec268f; border: 1px solid rgba(236, 38, 143, 0.2);">Laki-laki</span>
+                                        <?php else: ?>
+                                            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(245, 134, 52, 0.1); color: #f58634; border: 1px solid rgba(245, 134, 52, 0.2);">Perempuan</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700 font-medium"><?php echo $row['usia']; ?> tahun</td>
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700"><?php echo htmlspecialchars($row['no_telepon']); ?></td>
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-700 max-w-xs"><?php echo htmlspecialchars($row['asal_instansi']); ?></td>
+                                    <td class="px-8 py-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $badge_styles; ?>">
+                                            <?php echo ucfirst($row['jenis_pengunjung']); ?>
+                                        </span>
+                                    </td>
+                                    <td class="px-8 py-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 text-xs font-bold rounded-full border" style="<?php echo $waktu_styles; ?>">
+                                            <?php echo ucfirst($row['waktu_kunjungan']); ?>
+                                        </span>
+                                    </td>
+                                    <td class="px-8 py-4 whitespace-nowrap text-sm text-gray-600"><?php echo $tanggal; ?></td>
+                                </tr>
                             <?php endwhile; ?>
                         </tbody>
                     </table>
@@ -392,25 +411,25 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                 </div>
             <?php endif; ?>
         </div>
-        
+
         <!-- Tombol Export -->
         <?php if ($total_pengunjung > 0): ?>
-        <div class="max-w-6xl mx-auto mb-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-gray-600">
-                <i class="fas fa-info-circle mr-2" style="color: #ec268f;"></i>
-                Data diperbarui secara real-time
+            <div class="max-w-6xl mx-auto mb-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-gray-600">
+                    <i class="fas fa-info-circle mr-2" style="color: #ec268f;"></i>
+                    Data diperbarui secara real-time
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" onclick="window.print()" class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition duration-300 shadow-md">
+                        <i class="fas fa-print mr-2"></i> Cetak Laporan
+                    </a>
+                    <a href="export.php" class="btn-secondary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
+                        <i class="fas fa-file-excel mr-2"></i> Export Excel
+                    </a>
+                </div>
             </div>
-            <div class="flex gap-4">
-                <a href="#" onclick="window.print()" class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition duration-300 shadow-md">
-                    <i class="fas fa-print mr-2"></i> Cetak Laporan
-                </a>
-                <a href="export.php" class="btn-secondary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
-                    <i class="fas fa-file-excel mr-2"></i> Export Excel
-                </a>
-            </div>
-        </div>
         <?php endif; ?>
-        
+
         <!-- Footer -->
         <footer class="text-center text-gray-600">
             <div class="bg-white rounded-2xl card-shadow p-8 max-w-6xl mx-auto">
@@ -425,7 +444,7 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
             </div>
         </footer>
     </div>
-    
+
     <script>
         // Animasi untuk stat cards
         const statCards = document.querySelectorAll('.stat-card');
@@ -434,26 +453,27 @@ $usia_stats = mysqli_fetch_assoc($result_usia);
                 this.style.transform = 'translateY(-5px)';
                 this.style.boxShadow = '0 15px 30px rgba(236, 38, 143, 0.15)';
             });
-            
+
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
                 this.style.boxShadow = '';
             });
         });
-        
+
         // Highlight row on hover
         const tableRows = document.querySelectorAll('.table-row');
         tableRows.forEach(row => {
             row.addEventListener('mouseenter', function() {
                 this.style.backgroundColor = 'rgba(236, 38, 143, 0.05)';
             });
-            
+
             row.addEventListener('mouseleave', function() {
                 this.style.backgroundColor = '';
             });
         });
     </script>
 </body>
+
 </html>
 <?php
 // Tutup koneksi database
