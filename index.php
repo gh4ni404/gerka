@@ -126,7 +126,7 @@ require_once 'koneksi.php';
         <div class="max-w-8xl h-auto mx-auto mb-5 grid grid-cols-1 md:grid-cols-2 gap-5">
             <!-- Banner -->
             <div class="bg-white rounded-2xl card-shadow">
-                <img src="assets/images/comingsoon.jpeg" alt="Banner GERKA 2025" class="w-full h-auto rounded-2xl">
+                <img src="assets/images/banner.jpeg" alt="Banner GERKA 2025" class="w-full h-auto rounded-2xl">
             </div>
 
             <!-- Form Registrasi -->
