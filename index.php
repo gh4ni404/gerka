@@ -1,13 +1,5 @@
 <?php
 require_once 'koneksi.php';
-$pesan_sukses = '';
-$pesan_error = '';
-
-// Cek jika form disubmit
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    header("Location: proses.php");
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -19,11 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Poppins', sans-serif; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
@@ -39,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p class="text-lg text-gray-700">Gelar Karya SMKN 8 Bone</p>
                 </div>
             </div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Form Registrasi Pengunjung</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Form Pendaftaran Pengunjung Pameran</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">Daftarkan diri Anda untuk menghadiri Gelar Karya 2025 SMKN 8 Bone. Isi form berikut dengan data yang valid.</p>
         </header>
 
@@ -70,85 +64,125 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <form action="proses.php" method="POST" class="p-6 md:p-8" id="formRegistrasi">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Nama Lengkap -->
+                <!-- Nama Lengkap -->
+                <div class="form-group mb-6">
+                    <label for="nama" class="block text-gray-700 font-medium mb-2">
+                        <i class="fas fa-user text-blue-500 mr-1"></i> Nama Lengkap
+                    </label>
+                    <input type="text" id="nama" name="nama" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                           placeholder="Masukkan nama lengkap">
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Jenis Kelamin -->
                     <div class="form-group">
-                        <label for="nama" class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-user text-blue-500 mr-1"></i> Nama Lengkap
-                        </label>
-                        <input type="text" id="nama" name="nama" required 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                               placeholder="Masukkan nama lengkap">
-                    </div>
-                    
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email" class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-envelope text-blue-500 mr-1"></i> Email
-                        </label>
-                        <input type="email" id="email" name="email" required 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                               placeholder="contoh@email.com">
-                    </div>
-                    
-                    <!-- No Telepon -->
-                    <div class="form-group">
-                        <label for="no_telepon" class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-phone text-blue-500 mr-1"></i> No. Telepon/WA
-                        </label>
-                        <input type="tel" id="no_telepon" name="no_telepon" required 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                               placeholder="0812xxxxxxx">
-                    </div>
-                    
-                    <!-- Asal Instansi -->
-                    <div class="form-group">
-                        <label for="asal_instansi" class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-school text-blue-500 mr-1"></i> Asal Instansi/Sekolah
-                        </label>
-                        <input type="text" id="asal_instansi" name="asal_instansi" required 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                               placeholder="Nama sekolah atau instansi">
-                    </div>
-                    
-                    <!-- Jenis Pengunjung -->
-                    <div class="form-group md:col-span-2">
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-users text-blue-500 mr-1"></i> Jenis Pengunjung
+                            <i class="fas fa-venus-mars text-blue-500 mr-1"></i> Jenis Kelamin
                         </label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="jenis_pengunjung" value="siswa" required class="mr-3 text-blue-600 focus:ring-blue-500">
-                                <div>
-                                    <div class="font-medium">Siswa</div>
-                                    <div class="text-sm text-gray-500">Pelajar/Mahasiswa</div>
-                                </div>
+                        <div class="flex space-x-6">
+                            <label class="flex items-center">
+                                <input type="radio" name="jenis_kelamin" value="L" required class="mr-2 text-blue-600 focus:ring-blue-500">
+                                <span>Laki-laki</span>
                             </label>
-                            
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="jenis_pengunjung" value="guru" required class="mr-3 text-blue-600 focus:ring-blue-500">
-                                <div>
-                                    <div class="font-medium">Guru</div>
-                                    <div class="text-sm text-gray-500">Tenaga Pendidik</div>
-                                </div>
-                            </label>
-                            
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="jenis_pengunjung" value="umum" required class="mr-3 text-blue-600 focus:ring-blue-500">
-                                <div>
-                                    <div class="font-medium">Umum</div>
-                                    <div class="text-sm text-gray-500">Masyarakat Umum</div>
-                                </div>
-                            </label>
-                            
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="jenis_pengunjung" value="alumni" required class="mr-3 text-blue-600 focus:ring-blue-500">
-                                <div>
-                                    <div class="font-medium">Alumni</div>
-                                    <div class="text-sm text-gray-500">Alumni SMKN 8 Bone</div>
-                                </div>
+                            <label class="flex items-center">
+                                <input type="radio" name="jenis_kelamin" value="P" required class="mr-2 text-blue-600 focus:ring-blue-500">
+                                <span>Perempuan</span>
                             </label>
                         </div>
+                    </div>
+                    
+                    <!-- Usia -->
+                    <div class="form-group">
+                        <label for="usia" class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-birthday-cake text-blue-500 mr-1"></i> Usia
+                        </label>
+                        <input type="number" id="usia" name="usia" required min="1" max="100"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                               placeholder="Contoh: 17">
+                    </div>
+                </div>
+                
+                <!-- Alamat / Domisili -->
+                <div class="form-group mb-6">
+                    <label for="alamat" class="block text-gray-700 font-medium mb-2">
+                        <i class="fas fa-home text-blue-500 mr-1"></i> Alamat / Domisili
+                    </label>
+                    <textarea id="alamat" name="alamat" rows="3" required
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                              placeholder="Masukkan alamat lengkap"></textarea>
+                </div>
+                
+                <!-- Nomor Telepon / WhatsApp -->
+                <div class="form-group mb-6">
+                    <label for="no_telepon" class="block text-gray-700 font-medium mb-2">
+                        <i class="fas fa-phone text-blue-500 mr-1"></i> Nomor Telepon / WhatsApp
+                    </label>
+                    <input type="tel" id="no_telepon" name="no_telepon" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                           placeholder="0812xxxxxxx">
+                </div>
+                
+                <!-- Tujuan Kunjungan -->
+                <div class="form-group mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">
+                        <i class="fas fa-bullseye text-blue-500 mr-1"></i> Tujuan Kunjungan (bisa pilih lebih dari satu)
+                    </label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="tujuan_kunjungan[]" value="Melihat pameran" class="mr-3 rounded text-blue-600 focus:ring-blue-500">
+                            <span>Melihat pameran</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="tujuan_kunjungan[]" value="Membeli produk/karya" class="mr-3 rounded text-blue-600 focus:ring-blue-500">
+                            <span>Membeli produk/karya</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="tujuan_kunjungan[]" value="Riset/penelitian" class="mr-3 rounded text-blue-600 focus:ring-blue-500">
+                            <span>Riset/penelitian</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="tujuan_kunjungan[]" value="Mendampingi peserta" class="mr-3 rounded text-blue-600 focus:ring-blue-500">
+                            <span>Mendampingi peserta</span>
+                        </label>
+                        <div class="flex items-center mt-2">
+                            <input type="checkbox" id="lainnya_checkbox" class="mr-3 rounded text-blue-600 focus:ring-blue-500">
+                            <span>Lainnya:</span>
+                            <input type="text" id="lainnya_text" class="ml-2 px-3 py-2 border border-gray-300 rounded flex-grow" placeholder="Tulis tujuan lainnya" disabled>
+                        </div>
+                    </div>
+                    <!-- Input tersembunyi untuk menangani nilai "Lainnya" -->
+                    <input type="hidden" name="tujuan_kunjungan[]" id="lainnya_hidden">
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Hari/Tanggal Kunjungan -->
+                    <div class="form-group">
+                        <label for="hari_tanggal" class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-calendar-day text-blue-500 mr-1"></i> Hari/Tanggal Kunjungan
+                        </label>
+                        <input type="date" id="hari_tanggal" name="hari_tanggal" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                    </div>
+                    
+                    <!-- Waktu Masuk -->
+                    <div class="form-group">
+                        <label for="waktu_masuk" class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-clock text-blue-500 mr-1"></i> Waktu Masuk
+                        </label>
+                        <input type="time" id="waktu_masuk" name="waktu_masuk" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                    </div>
+                </div>
+                
+                <!-- Persetujuan -->
+                <div class="form-group mb-8">
+                    <div class="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <input type="checkbox" id="setuju" name="setuju" required 
+                               class="mt-1 mr-3 rounded text-blue-600 focus:ring-blue-500">
+                        <label for="setuju" class="text-gray-700">
+                            Saya menyetujui bahwa data saya digunakan untuk keperluan administrasi dan evaluasi acara.
+                        </label>
                     </div>
                 </div>
                 
@@ -172,20 +206,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Informasi Acara -->
         <div class="max-w-2xl mx-auto mt-10 bg-white rounded-xl shadow-md p-6">
             <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <i class="fas fa-info-circle text-blue-500 mr-2"></i> Informasi Acara
+                <i class="fas fa-info-circle text-blue-500 mr-2"></i> Informasi Acara GERKA 2025
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="text-center p-4 bg-blue-50 rounded-lg">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">GERKA 2025</div>
-                    <div class="text-gray-700">Gelar Karya Siswa</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-bold text-lg text-blue-700 mb-2">Lokasi</h4>
+                    <p class="text-gray-700">SMKN 8 Bone</p>
+                    <p class="text-gray-600 text-sm">Jl. Pendidikan No. 45, Bone, Sulawesi Selatan</p>
                 </div>
-                <div class="text-center p-4 bg-purple-50 rounded-lg">
-                    <div class="text-2xl font-bold text-purple-600 mb-2">SMKN 8 Bone</div>
-                    <div class="text-gray-700">Sekolah Menengah Kejuruan Negeri 8 Bone</div>
-                </div>
-                <div class="text-center p-4 bg-green-50 rounded-lg">
-                    <div class="text-xl font-bold text-green-600 mb-2">Berkarya & Inovasi</div>
-                    <div class="text-gray-700">Membangun Generasi Kreatif</div>
+                <div>
+                    <h4 class="font-bold text-lg text-blue-700 mb-2">Waktu Pelaksanaan</h4>
+                    <p class="text-gray-700">15-17 Mei 2025</p>
+                    <p class="text-gray-600 text-sm">Pukul 08:00 - 16:00 WITA</p>
                 </div>
             </div>
         </div>
@@ -199,24 +231,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <!-- JavaScript untuk validasi form -->
     <script>
+        // Menangani checkbox "Lainnya"
+        const lainnyaCheckbox = document.getElementById('lainnya_checkbox');
+        const lainnyaText = document.getElementById('lainnya_text');
+        const lainnyaHidden = document.getElementById('lainnya_hidden');
+
+        lainnyaCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                lainnyaText.disabled = false;
+                lainnyaText.focus();
+            } else {
+                lainnyaText.disabled = true;
+                lainnyaText.value = '';
+            }
+        });
+
+        // Saat form disubmit
         document.getElementById('formRegistrasi').addEventListener('submit', function(e) {
             const nama = document.getElementById('nama').value.trim();
-            const email = document.getElementById('email').value.trim();
+            const usia = document.getElementById('usia').value;
+            const alamat = document.getElementById('alamat').value.trim();
             const telepon = document.getElementById('no_telepon').value.trim();
-            const asal = document.getElementById('asal_instansi').value.trim();
+            const tanggal = document.getElementById('hari_tanggal').value;
+            const waktu = document.getElementById('waktu_masuk').value;
+            const setuju = document.getElementById('setuju').checked;
             
-            // Validasi sederhana
-            if (!nama || !email || !telepon || !asal) {
+            // Validasi checkbox tujuan kunjungan
+            const tujuanCheckboxes = document.querySelectorAll('input[name="tujuan_kunjungan[]"]:checked');
+            const tujuanLainnya = document.getElementById('lainnya_text').value.trim();
+            
+            // Jika checkbox lainnya dicentang dan ada isinya, tambahkan ke hidden input
+            if (lainnyaCheckbox.checked && tujuanLainnya !== '') {
+                lainnyaHidden.value = tujuanLainnya;
+            } else {
+                lainnyaHidden.disabled = true;
+            }
+            
+            // Validasi minimal satu tujuan kunjungan terpilih
+            if (tujuanCheckboxes.length === 0 && !(lainnyaCheckbox.checked && tujuanLainnya !== '')) {
+                e.preventDefault();
+                alert('Pilih minimal satu tujuan kunjungan!');
+                return false;
+            }
+            
+            // Validasi sederhana lainnya
+            if (!nama || !usia || !alamat || !telepon || !tanggal || !waktu) {
                 e.preventDefault();
                 alert('Harap isi semua field yang wajib diisi!');
                 return false;
             }
             
-            // Validasi email
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
+            if (!setuju) {
                 e.preventDefault();
-                alert('Format email tidak valid!');
+                alert('Anda harus menyetujui penggunaan data!');
+                return false;
+            }
+            
+            // Validasi usia
+            if (usia < 1 || usia > 100) {
+                e.preventDefault();
+                alert('Usia harus antara 1-100 tahun!');
                 return false;
             }
             
@@ -230,6 +304,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             return true;
         });
+        
+        // Set tanggal minimal hari ini
+        document.getElementById('hari_tanggal').min = new Date().toISOString().split("T")[0];
     </script>
 </body>
 </html>
